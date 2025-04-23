@@ -1,16 +1,12 @@
 @import "tailwindcss";
 
-:root {
-  --background: #ffffff;
-  --foreground: #171717;
-}
-
 @theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
+    --color-primary: #16a34a;
+    --color-secondary: #00d47e;
+    --color-body-bg: #edfff8;
+    --background-image-herobg: url('/assets/images/hero-bg-2.png');
 }
+/* 
 
 @media (prefers-color-scheme: dark) {
   :root {
@@ -23,4 +19,114 @@ body {
   background: var(--background);
   color: var(--foreground);
   font-family: Arial, Helvetica, sans-serif;
+} */
+
+@layer base {
+    .loader {
+        width: 30px;
+        height: 30px;
+        border: 5px solid #fff;
+        border-bottom-color: transparent;
+        border-radius: 50%;
+        display: inline-block;
+        box-sizing: border-box;
+        animation: rotation 1s linear infinite;
+    }
+
+    @keyframes rotation {
+        0% {
+            transform: rotate(0deg);
+        }
+        100% {
+            transform: rotate(360deg);
+        }
+    }
+
+    .custom-scrollbar::-webkit-scrollbar {
+        width: 6px;
+        height: 3px;
+        border-radius: 50px;
+    }
+
+    .custom-scrollbar::-webkit-scrollbar-track {
+        background: transparent;
+    }
+
+    .custom-scrollbar::-webkit-scrollbar-thumb {
+        background: #e5e7eb;
+        border-radius: 50px;
+    }
+
+    .custom-scrollbar::-webkit-scrollbar-thumb:hover {
+        background: #fa7275;
+    }
+
+    /* Remove scrollbar */
+    .remove-scrollbar::-webkit-scrollbar {
+        width: 0px;
+        height: 0px;
+        border-radius: 0px;
+    }
+
+    .remove-scrollbar::-webkit-scrollbar-track {
+        background: transparent;
+    }
+
+    .remove-scrollbar::-webkit-scrollbar-thumb {
+        background: transparent;
+        border-radius: 0px;
+    }
+
+    .remove-scrollbar::-webkit-scrollbar-thumb:hover {
+        /* background: #1e2238; */
+        background: transparent;
+    }
+
+    /* Custom Swiper Pagination Dots */
+    .swiper-pagination-bullet {
+        background: black !important; /* Default dot color */
+        opacity: 1 !important;
+        width: 10px !important;
+        height: 10px !important;
+        transition: all 0.3s ease;
+    }
+
+    .swiper-pagination-bullet-active {
+        background: #f97316 !important; /* Change to your preferred active color */
+        opacity: 1;
+        transform: scale(1.3);
+    }
+}
+
+@layer utilities {
+    .sheet-open {
+        animation: slideIn 300ms ease-out forwards;
+    }
+    .sheet-closed {
+        animation: slideOut 300ms ease-in forwards;
+    }
+
+    @keyframes slideIn {
+        from {
+            transform: translateX(100%);
+        }
+        to {
+            transform: translateX(0%);
+        }
+    }
+
+    @keyframes slideOut {
+        from {
+            transform: translateX(0%);
+        }
+        to {
+            transform: translateX(100%);
+        }
+    }
+    .container {
+        @apply mx-auto max-w-[1400px];
+    }
+    .section-w {
+        @apply w-[90%] lg:w-[80%] mx-auto;
+    }
 }
